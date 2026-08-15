@@ -12,7 +12,7 @@ function App() {
 
     return (
         <>
-            <header className="bg-sky-50 text-center my-24 p-12 rounded-3xl mx-auto max-w-screen-lg">
+            <header className="bg-sky-50 text-center my-24 p-12 rounded-3xl mx-auto max-w-5xl">
                 <h1 className="text-4xl font-bold mb-8">Witamy w "Wakacyjnym wyzwaniu" <Sun className='inline-block size-12 text-yellow-400' /></h1>
                 <p className="text-gray-600 text-lg">Sprawdź <span className='underline font-bold'>README.md</span> i zobacz co dla ciebie przygotowaliśmy</p>
             </header>
