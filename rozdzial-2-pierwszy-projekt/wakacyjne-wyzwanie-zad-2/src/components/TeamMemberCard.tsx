@@ -33,7 +33,7 @@ export function TeamMemberCard({ name, role, bio, skills}: TeamMemberCardProps) 
 
             <div className="lg:flex lg:flex-col lg:min-w-3/10">
                 <h2 className="mb-1 italic text-xs text-slate-500">skills</h2>
-                <ul className="flex flex-wrap justify-baseline gap-2 text-xs">
+                <ul className="flex flex-wrap justify-start gap-2 text-xs">
                     {skills.map((skill) => (
                         <li key={skill} className="px-2 py-1 bg-slate-600 rounded-full">{skill}</li>
                     ))}
