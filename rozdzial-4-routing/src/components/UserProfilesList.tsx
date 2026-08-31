@@ -1,34 +1,26 @@
+// components/UserProfileList.tsx
+import { error } from "console";
 import { User } from "../types/User";
 import { UserProfileCard } from "./UserProfileCard";
+import { MOCK_USERS } from "@/src/data/mockUsers";
 
-const MOCK_USERS: User[] = [
-  {
-    id: "1",
-    name: "Alex Rivera",
-    role: "Frontend Developer",
-    avatarUrl: "https://robohash.org/alex",
-    likesPizza: true,
-  },
-  {
-    id: "2",
-    name: "Sam Chen",
-    role: "UI/UX Designer",
-    avatarUrl: "https://robohash.org/sam",
-    likesPizza: true,
-  },
-  {
-    id: "3",
-    name: "Jordan Taylor",
-    role: "Backend Engineer",
-    avatarUrl: "https://robohash.org/jordan",
-    likesPizza: false,
-  },
-];
 
-export function UserProfileList() {
+async function getUsers(): Promise<User[]> {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+
+  //throw new Error("Testowy błąd ładowania użytkowników")
+
+  return MOCK_USERS;
+}
+
+export async function UserProfileList() {
+  const users = await getUsers();
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
-      {MOCK_USERS.map((user) => (
+    <div className="w-full md:w-fit h-fit grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+      {users.map((user) => (
         <UserProfileCard key={user.id} user={user} />
       ))}
     </div>
