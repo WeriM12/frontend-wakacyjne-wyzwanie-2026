@@ -1,3 +1,4 @@
+//components/UserProfileCard.tsx
 import Link from "next/link";
 import { User } from "../types/User";
 
@@ -7,7 +8,7 @@ interface UserProfileCardProps {
 
 export function UserProfileCard({ user }: UserProfileCardProps) {
   return (
-    <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="border-t border-b flex flex-col h-full w-full md:w-60 rounded-lg p-4 shadow-sm bg-linear-to-b from-gray-900 to-transparent hover:shadow-md transition-shadow shadow-gray-600">
       <img
         src={user.avatarUrl}
         alt={user.name}
@@ -17,7 +18,7 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
       <p className="text-sm text-gray-600 mb-4">{user.role}</p>
       <Link
         href={`/users/${user.id}`}
-        className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
+        className="w-fit mt-auto ml-auto text-blue-100 text-sm border-transparent px-4 py-2 font-bold duration-200 rounded hover:text-blue-300 hover:border-gray-200"
       >
         Zobacz profil
       </Link>
