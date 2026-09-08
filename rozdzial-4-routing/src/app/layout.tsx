@@ -1,5 +1,7 @@
+// layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,7 +25,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="flex flex-row justify-center p-4 gap-8 shadow-sm shadow-gray-600 border-b">
+          <Link href="/" className="hover:underline w-fit text-nowrap text-center">Strona główna</Link>
+          <Link href="/users" className="hover:underline w-fit text-nowrap text-center">Użytkownicy</Link>
+        </nav>
+        <main className="mt-8">
+          {children}
+        </main>
+        
+      </body>
     </html>
   );
 }
