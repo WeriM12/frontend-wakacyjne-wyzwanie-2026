@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./globals.css";
-import Link from "next/link";
-import { NAV_LINKS } from "@/src/config";
+import Navbar from "../components/Navbar";
+import { ThemeProvider } from "../components/theme-provider";
+import { ModeToggle } from "../components/DarkModeButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,25 +24,29 @@ export const metadata: Metadata = {
 export default function RootLayout({ children, modal }: PropsWithChildren & { modal: React.ReactNode }) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="en" 
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased overflow-hidden`}
     >
       <body className="min-h-full flex flex-col">
-      <div>
-        <nav className="inset-0 py-6 grid place-items-center">
-          <ul className="flex items-center gap-4">
-            {NAV_LINKS.map(link => (
-              // Obsługa zdarzenia 'hover'
-              <li key={link.id} className="transition-colors hover:text-blue-500">
-                <Link href={link.href}>{link.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="fixed top-4 right-4 z-50">
+            <ModeToggle/>
+          </div>
 
-        <main className="py-16 max-w-4xl mx-auto">{children}</main>
-        {modal}
-      </div>
+          <div>
+            <Navbar />
+
+            <main className="py-16 max-w-4xl mx-auto">{children}</main>
+            {modal}
+          </div>
+        </ThemeProvider>
+
       </body>
     </html>
   );
