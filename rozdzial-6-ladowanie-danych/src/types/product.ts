@@ -53,6 +53,7 @@ export interface ProductsResponse {
 
 export interface NewProductInput {
   title: string;
+  description?: string;
   price: number;
   category: string;
 }
